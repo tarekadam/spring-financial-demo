@@ -18,8 +18,22 @@ type Query {
 }
 
 type Mutation {
-    createPlayer(name: String! @rules(apply: ["string", "unique:players", "min: 1", "max: 10"])) : Player! @create
+    createPlayer(
+        name: String! @rules(apply: ["string", "unique:players", "min: 1", "max: 10"])
+        address: AddressOrm
+    ) : Player! @create
     deletePlayer(id: ID!) : Player @delete
-    play(id: ID!, operation: String! @rules(apply: ["string", "in:increment,decrement"])) : Player!
 
+    play(id: ID!, operation: String! @rules(apply: ["string", "in:increment,decrement"])) : Player!
+}
+
+input AddressOrm{
+    create: AddressFields
+}
+
+input AddressFields{
+    street: String!
+    city: String!
+    state: String!
+    zip: String!
 }
