@@ -1,4 +1,5 @@
 type Player {
+    id: ID!
     name: String!
     score: Int!
     address: Address @hasOne
