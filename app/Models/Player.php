@@ -24,7 +24,6 @@ class Player extends Model
      */
     public function increment($column = 'score', $amount = 1, array $extra = [])
     {
-
         return parent::increment($column, $amount, $extra);
     }
 
