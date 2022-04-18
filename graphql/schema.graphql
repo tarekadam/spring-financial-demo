@@ -20,6 +20,6 @@ type Query {
 type Mutation {
     createPlayer(name: String! @rules(apply: ["string", "unique:players", "min: 1", "max: 10"])) : Player! @create
     deletePlayer(id: ID!) : Player @delete
-
     play(id: ID!, operation: String! @rules(apply: ["string", "in:increment,decrement"])) : Player!
+
 }
