@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Address;
 use App\Models\Player;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -25,6 +26,12 @@ class PlayerTest extends TestCase
         $this->Player        = new Player(['name' => $this->faker->firstName]);
         $this->Player->score = self::SCORE;
         $this->Player->save();
+
+        Address::factory()
+               ->make()
+               ->Player()
+               ->associate($this->Player)
+               ->save();
     }
 
     /**
@@ -74,5 +81,22 @@ class PlayerTest extends TestCase
         $this->Player->score = 0;
         $this->Player->decrement();
         $this->assertEquals(0, $this->Player->score);
+    }
+
+    /**
+     * @see Player::Address
+     *
+     * @test
+     */
+    public function all_players_have_addresses()
+    {
+
+        $players = Player::all();
+
+        foreach($players as $player)
+        {
+            $this->assertTrue($player->Address()->exists());
+        }
+
     }
 }
