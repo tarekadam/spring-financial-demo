@@ -51,4 +51,5 @@ class Player extends Model
     public function Address(){
         return $this->hasOne(Address::class);
     }
+
 }

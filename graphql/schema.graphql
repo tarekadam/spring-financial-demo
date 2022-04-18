@@ -1,7 +1,14 @@
 type Player {
-    id: ID!
     name: String!
     score: Int!
+    address: Address @hasOne
+}
+
+type Address {
+    street: String!,
+    city: String!,
+    state: String!,
+    zip: String!
 }
 
 type Query {
