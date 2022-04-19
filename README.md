@@ -105,7 +105,11 @@ mutation {
   }
 }
 ```
-# PostMan Demo
+# PostMan
 Please download and import this PostMan collection to play with the API.
 
 > http://sfd-graphql.thebackoffice.io/SpringFinancial.postman_collection.json.zip
+
+# Dev Demo
+Please use the queries provided above in this UI.
+> http://sfd-graphql.thebackoffice.io/graphql-playground
